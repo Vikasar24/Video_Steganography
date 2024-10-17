@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Video Steganography</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Video Steganography</h1>
+        
+        <div class="section">
+            <h2>Embed Message</h2>
+            <form action="/embed" method="post" enctype="multipart/form-data">
+                <label for="video">Select Video:</label>
+                <input type="file" name="video" id="video" accept="video/*" required>
+                
+                <label for="message">Secret Message:</label>
+                <textarea name="message" id="message" rows="4" required></textarea>
+                
+                <button type="submit">Embed Message</button>
+            </form>
+        </div>
+        
+        <div class="section">
+            <h2>Extract Message</h2>
+            <form action="/extract" method="post" enctype="multipart/form-data">
+                <label for="stego_video">Select Stego Video:</label>
+                <input type="file" name="stego_video" id="stego_video" accept="video/*" required>
+                
+                <button type="submit">Extract Message</button>
+            </form>
+        </div>
+        
+        {% if extracted_message %}
+            <div class="result">
+                <h3>Extracted Message:</h3>
+                <p>{{ extracted_message }}</p>
+            </div>
+        {% endif %}
+        
+        {% if download_link %}
+            <div class="result">
+                <h3>Download Stego Video:</h3>
+                <a href="{{ download_link }}">Download</a>
+            </div>
+        {% endif %}
+        
+    </div>
+</body>
+</html>
