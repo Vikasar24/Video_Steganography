@@ -180,6 +180,3 @@ For more information on deploying Flask apps, refer to the official documentatio
 
 ---
 
-## License
-
-This project is licensed under the MIT License. Feel free to modify and use it as needed.
